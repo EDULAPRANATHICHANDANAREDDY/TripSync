@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Feedback - TripSync</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  <style>
+    /* 🌈 Page Background and Layout */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #b9eaf3, #e0f7fa, #ffffff);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      overflow-x: hidden;
+    }
+
+    /* ✨ Main Section Layout */
+    main {
+      padding: 200px 20px 90px; /* initial padding for browsers without JS */
+      text-align: center;
+      animation: fadeIn 1s ease;
+      transition: padding-top 0.3s ease;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      color: #007a93;
+      margin-top: 20px; /* ensure visible even with dynamic padding */
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      padding: 0 10px;
+    }
+
+    /* 💬 Feedback Form Styling */
+    form {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 30px 28px;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto 55px;
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1.2s ease;
+      transition: transform 0.3s ease;
+    }
+
+    form:hover {
+      transform: scale(1.01);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0099b8;
+      box-shadow: 0 0 8px rgba(0, 153, 184, 0.4);
+      outline: none;
+    }
+
+    /* ✈️ Button */
+    .cta-btn {
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 26px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 5px;
+      transition: background 0.4s ease, transform 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #0077b6, #023e8a);
+      transform: scale(1.04);
+    }
+
+    /* 💭 Feedback Cards */
+    section h3 {
+      color: #007a93;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    .feedback-card {
+      background: #ffffffdd;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin: 16px auto;
+      max-width: 680px;
+      text-align: left;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeSlide 0.8s ease;
+    }
+
+    .feedback-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .feedback-card p {
+      margin: 8px 0;
+      word-wrap: break-word;
+    }
+
+    /* 🌍 Footer */
+    footer {
+      background: #0f87b9; /* ✅ Updated color */
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      margin-top: 45px;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* ✨ Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 📱 Responsive Design */
+    @media (max-width: 768px) {
+      main {
+        padding: 160px 15px 70px;
+      }
+
+      h2 {
+        font-size: 1.9rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .feedback-card {
+        width: 95%;
+        padding: 14px;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <main class="container">
+    <h2>💬 Share Your Feedback</h2>
+    <p>We’d love to hear from you! ✨ Tell us what you think about <strong>TripSync</strong> 🌍</p>
+
+    <form action="/feedback" method="POST">
+      <input name="name" placeholder="🧑 Your Name (optional)" />
+      <input name="email" placeholder="📧 Your Email (optional)" />
+      <textarea name="message" placeholder="💭 Your Feedback..." rows="5" required></textarea>
+      <button type="submit" class="cta-btn">Submit Feedback 💌</button>
+    </form>
+
+    <section>
+      <h3>⭐ Customer Feedback</h3>
+      <% if (feedbacks.length === 0) { %>
+        <p style="color:#666">No feedback yet — be the first to share! 😊</p>
+      <% } else { %>
+        <% feedbacks.forEach(f => { %>
+          <div class="feedback-card">
+            <p style="font-weight:600;">
+              <%= f.name || 'Anonymous' %> 
+              <span style="font-weight:400;color:#777;font-size:13px">— 
+                <%= new Date(f.created_at).toLocaleString() %>
+              </span>
+            </p>
+            <p style="color:#333"><%= f.message %></p>
+          </div>
+        <% }) %>
+      <% } %>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 TripSync — ✈️ Collect memories, not things.<br/>
+    Built with 💻 Node.js, Express, EJS, PostgreSQL & Nodemailer.
+  </footer>
+
+  <script>
+    // 🌟 Adjust main padding dynamically based on header height
+    window.addEventListener('load', () => {
+      const header = document.querySelector('header');
+      const main = document.querySelector('main');
+      if (header && main) {
+        const headerHeight = header.offsetHeight;
+        main.style.paddingTop = `${headerHeight + 70}px`; // 70px extra gap for clarity
+      }
+    });
+  </script>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

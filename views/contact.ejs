@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact - TripSync</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+  <style>
+    /* 🌤️ Page Layout */
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #d4f1f9, #ffffff, #b9eaf3);
+      background-size: 300% 300%;
+      animation: gradientMove 10s ease infinite;
+      overflow-x: hidden;
+      overflow-y: auto; /* ✅ allows scrolling */
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 80px 20px 100px; /* ✅ Added bottom padding for spacing */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      color: #007a93;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      word-wrap: break-word; /* ✅ prevents text cutoff */
+    }
+
+    p {
+      color: #333;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+
+    /* 💌 Contact Form */
+    form {
+      background: #ffffffb8;
+      padding: 30px 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      backdrop-filter: blur(6px);
+      animation: fadeUp 1.2s ease;
+      transition: transform 0.3s ease;
+      margin-bottom: 40px; /* ✅ space before footer */
+    }
+
+    form:hover {
+      transform: scale(1.01);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0099b8;
+      box-shadow: 0 0 6px rgba(0, 153, 184, 0.4);
+      outline: none;
+    }
+
+    /* 🚀 Send Button */
+    .cta-btn {
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.4s ease, transform 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      background: linear-gradient(90deg, #0077b6, #023e8a);
+      transform: scale(1.05);
+    }
+
+    /* 🌍 Footer */
+    footer {
+      background: #0f87b9; /* ✅ Updated color */
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* 🎞️ Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* 📱 Responsive Design */
+    @media (max-width: 600px) {
+      main {
+        padding: 70px 15px 100px;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+        max-width: 95%;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>📞 Get in Touch with TripSync</h2>
+    <p>💬 Have questions, feedback, or need travel support? Drop us a message — we’d love to hear from you! ✈️</p>
+
+    <% if (typeof message !== 'undefined') { %>
+      <div style="background:#e6fffa;padding:10px;border-radius:6px;margin-bottom:10px;color:#064;max-width:600px;width:100%;">
+        <%= message %>
+      </div>
+    <% } %>
+
+    <form action="/contact" method="POST">
+      <input name="name" placeholder="🧑 Your Name" required />
+      <input type="email" name="email" placeholder="📧 Your Email" required />
+      <textarea name="message" placeholder="📝 Type your message..." rows="6" required></textarea>
+      <button type="submit" class="cta-btn">Send ✉️</button>
+    </form>
+  </main>
+
+  <footer>
+    © 2025 TripSync — 🌍 Collect memories, not things.<br/>
+    Built with 💻 Node.js, Express, EJS, PostgreSQL & Nodemailer.
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

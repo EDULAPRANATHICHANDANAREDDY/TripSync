@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title><%= location.name %> - TripSync</title><link rel="stylesheet" href="/css/style.css" /></head>
+<body>
+<%- include('partials/header') %>
+
+  <main class="container" style="padding-top:30px;">
+    <div class="location-detail">
+      <img src="<%= location.image %>" alt="<%= location.name %>">
+      <div style="flex:1;">
+        <h2><%= location.name %></h2>
+        <p style="color:#555;font-size:16px;"><%= location.details %></p>
+        <h4 style="margin-top:12px;">What to do in <%= location.name %>:</h4>
+        <ul>
+          <li>Explore local attractions and food.</li>
+          <li>Visit iconic landmarks & scenic viewpoints.</li>
+          <li>Try local experiences and cultural activities.</li>
+        </ul>
+        <p style="margin-top:12px">Back to <a href="/locations">Locations</a></p>
+      </div>
+    </div>
+  </main>
+<%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

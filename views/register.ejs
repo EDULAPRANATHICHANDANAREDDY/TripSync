@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TripSync</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- 🌐 Navigation Bar -->
+  <nav class="nav-bar" style="background-color:#0098cc;display:flex;justify-content:space-between;align-items:center;padding:10px 40px;color:white;">
+    <div class="logo" style="display:flex;align-items:center;gap:8px;">
+      <img src="/images/logo.png" alt="TripSync" style="width:40px;height:40px;">
+      <h1 style="font-size:24px;">TripSync</h1>
+    </div>
+
+    <ul style="list-style:none;display:flex;gap:25px;align-items:center;margin:0;padding:0;">
+      <li><a href="/" style="color:white;text-decoration:none;">Home</a></li>
+      <li><a href="/locations" style="color:white;text-decoration:none;">Locations</a></li>
+      <li><a href="/about" style="color:white;text-decoration:none;">About Us</a></li>
+      <li><a href="/contact" style="color:white;text-decoration:none;">Contact Us</a></li>
+      <li><a href="/feedback" style="color:white;text-decoration:none;">Feedback</a></li>
+      <li><button id="openRegisterModal" class="register-btn" style="background:#0077b6;color:white;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;">Register</button></li>
+    </ul>
+  </nav>
+
+  <!-- 🧾 Register Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 style="margin-bottom:15px;">Register with TripSync</h2>
+
+      <form id="registerForm" action="/register" method="POST">
+        <input name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+
+        <div class="modal-buttons">
+          <button type="submit" class="cta-btn">Register</button>
+          <button type="button" class="google-btn">Continue with Google (not configured)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("registerModal");
+    const openBtn = document.getElementById("openRegisterModal");
+    const closeBtn = document.getElementById("closeModal");
+
+    openBtn.addEventListener("click", () => modal.style.display = "flex");
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

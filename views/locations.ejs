@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Locations - TripSync</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+
+  <style>
+    /* 🌄 Animated Gradient Background */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(120deg, #b9eaf3, #e0f7fa, #ffffff);
+      background-size: 300% 300%;
+      animation: gradientFlow 10s ease infinite;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ✨ Floating Decorative Circles */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: float 10s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #80deea, #00bcd4);
+      top: 15%;
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .circle2 {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 40% 40%, #b2ebf2, #4dd0e1);
+      bottom: 20%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .circle3 {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at 60% 60%, #81d4fa, #0288d1);
+      top: 60%;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* 🌟 Fade-in Content */
+    main {
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 🟦 Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px 50px;
+    }
+
+    /* 🧭 Location Card */
+    .card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    /* Lift-up Animation on Hover */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card .meta {
+      padding: 12px;
+    }
+
+    .card h3 {
+      margin: 8px 0 5px;
+      font-size: 1.1em;
+      color: #0077b6;
+    }
+
+    .card p {
+      font-size: 0.9em;
+      color: #666;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #004d61;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ✨ Floating Background Graphics -->
+  <div class="floating-circle circle1"></div>
+  <div class="floating-circle circle2"></div>
+  <div class="floating-circle circle3"></div>
+
+  <%- include('partials/header') %>
+
+  <main class="container" style="padding-top:30px;">
+    <h2>Top 20 places in India</h2>
+    <p style="text-align:center;color:#666;margin-bottom:18px">
+      Click any card to see more details
+    </p>
+
+    <div class="grid">
+      <% locations.forEach(loc => { %>
+        <div 
+          class="card" 
+          onclick="window.open('https://en.wikipedia.org/wiki/<%= encodeURIComponent(loc.name) %>', '_blank')">
+          <img src="<%= loc.image %>" alt="<%= loc.name %>">
+          <div class="meta">
+            <h3><%= loc.name %></h3>
+            <p><%= loc.details %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

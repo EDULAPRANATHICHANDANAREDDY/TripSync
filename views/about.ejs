@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About TripSync</title>
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    /* 🌈 Animated Gradient Background */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #ffffff, #b9f3fc);
+      background-size: 400% 400%;
+      animation: gradientFlow 10s ease infinite;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ☁️ Floating Clouds */
+    .cloud {
+      position: fixed;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(8px);
+      animation: floatClouds 35s linear infinite;
+      z-index: 0;
+    }
+
+    .cloud1 { width: 180px; height: 80px; top: 25%; left: -300px; animation-delay: 0s; }
+    .cloud2 { width: 220px; height: 90px; top: 50%; left: -400px; animation-delay: 6s; }
+    .cloud3 { width: 250px; height: 100px; top: 70%; left: -500px; animation-delay: 12s; }
+
+    @keyframes floatClouds {
+      0% { left: -300px; }
+      100% { left: 110%; }
+    }
+
+    /* 🧭 Hero Section */
+    .about-hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 60px 20px;
+    }
+
+    .about-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      padding: 40px 45px;
+      background: rgba(0, 0, 0, 0.45);
+      border-radius: 14px;
+      animation: fadeIn 1.5s ease;
+      color: white;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .about-content:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #f8f8f8;
+      margin-bottom: 15px;
+    }
+
+    /* ✨ Info & Section Boxes */
+    .about-section {
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .info-box,
+    .places-box {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .info-box:hover,
+    .places-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 153, 184, 0.35);
+    }
+
+    /* 🌍 Places Grid */
+    .places {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .place {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      animation: fadeUp 1s ease both;
+      animation-delay: calc(var(--i) * 0.05s);
+    }
+
+    .place:hover {
+      background: #e0f7fa;
+      transform: translateY(-8px);
+      box-shadow: 0 8px 18px rgba(0, 153, 184, 0.3);
+    }
+
+    .place a {
+      text-decoration: none;
+      color: #0099b8;
+      font-weight: 600;
+    }
+
+    /* 👩‍💻 About Me Section */
+    .about-me-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: left;
+      padding: 40px 30px;
+      margin-top: 0;
+    }
+
+    .about-me-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: slideInLeft 1.2s ease;
+    }
+
+    .about-me-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(0, 153, 184, 0.4);
+      transition: transform 0.4s ease;
+    }
+
+    .about-me-img img:hover {
+      transform: scale(1.05);
+    }
+
+    .about-me-text {
+      flex: 2;
+      padding: 0 30px;
+      animation: slideInRight 1.2s ease;
+    }
+
+    .about-me-text h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #0099b8;
+    }
+
+    .about-me-text p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    /* ✨ Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 900px) {
+      .about-me-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+      }
+      .about-me-text {
+        padding: 20px 0 0 0;
+      }
+      .about-me-img img {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ☁️ Floating Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <%- include('partials/header') %>
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="about-content">
+      <h1>About TripSync 🌍</h1>
+      <p>
+        Welcome to <strong>TripSync</strong> — your personal travel companion designed to make journey planning smarter, faster, and more inspiring.
+        Whether you dream of exploring serene beaches, trekking through mountain trails, or immersing in vibrant city life, TripSync helps turn your vision into reality.
+      </p>
+      <p>
+        Our mission is simple — to bridge the gap between wanderlust and real travel experiences through modern technology and community-driven insights.
+        TripSync transforms how you discover, plan, and experience travel by connecting you to destinations, activities, and local cultures effortlessly.
+      </p>
+      <p>
+        Travel isn’t just about the places you go — it’s about the stories you create. With intuitive tools, personalized guides, and a global community of explorers, 
+        TripSync ensures your every journey is memorable, smooth, and meaningful.
+      </p>
+    </div>
+  </section>
+
+  <!-- What is TripSync -->
+  <section class="about-section">
+    <div class="info-box">
+      <h2>What is TripSync?</h2>
+      <p>
+        TripSync helps travelers plan unforgettable journeys by showcasing destinations, local highlights, and real-world travel inspiration.
+        From discovering hidden gems to organizing your itinerary, our goal is to simplify travel and make it more enjoyable for everyone.
+      </p>
+      <p>
+        Whether you're seeking tropical beaches, bustling markets, or peaceful mountain retreats, TripSync connects you with insights, reviews, and effortless planning tools — 
+        all in one place.
+      </p>
+    </div>
+
+    <div class="places-box">
+      <h3>Explore Our Top 20 Destinations 🌴</h3>
+      <div class="places">
+        <% const places = [
+          "Goa", "Jaipur", "Agra", "Varanasi", "Munnar (Kerala)", "Leh-Ladakh", "Rishikesh", "Shimla", "Darjeeling", "Udaipur",
+          "Hyderabad", "Kolkata", "Mumbai", "Pondicherry", "Hampi", "Khajuraho", "Coorg", "Andaman Islands", "Gangtok (Sikkim)", "Ooty"
+        ]; %>
+        <% places.forEach((place, index) => { %>
+          <div class="place" style="--i:<%= index %>">
+            <a href="/locations"><%= place %></a>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section class="about-section">
+    <div class="info-box about-me-box">
+      <div class="about-me-img">
+        <img src="/images/Pranathi Reddy.jpeg" alt="Pranathi Chandana Reddy" />
+      </div>
+      <div class="about-me-text">
+        <h2>About Me 👩‍💻</h2>
+        <p>
+          Hi! I’m <strong>Pranathi Chandana Reddy</strong>, the creator of <strong>TripSync</strong>.  
+          I built this platform to inspire people to travel smarter — combining my passion for design and technology to create seamless, beautiful experiences.
+        </p>
+        <p>
+          Built using <strong>Node.js</strong>, <strong>Express</strong>, <strong>EJS</strong>, and <strong>PostgreSQL</strong>,
+          TripSync brings together creativity and logic — turning wanderlust into interactive, real-world adventures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

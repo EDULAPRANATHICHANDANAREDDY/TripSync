@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Registration Successful</title><link rel="stylesheet" href="/css/style.css" /></head>
+<body>
+ <%- include('partials/header') %>
+
+  <main>
+    <div class="success-box">
+      <h2>Registration Successful 🎉</h2>
+      <p>Thanks, <strong><%= name %></strong>! An email has been sent to <strong><%= email %></strong>. Check your inbox for a welcome message from TripSync.</p>
+      <p>We look forward to helping you discover amazing experiences. Click <a href="/locations">here</a> to explore the top 20 places in India.</p>
+    </div>
+  </main>
+<%- include('partials/footer') %>
+
+</body>
+</html>
